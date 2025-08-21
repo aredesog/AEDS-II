@@ -1,0 +1,39 @@
+O makefile é um arquivo que e feito para compilar com maior facilidadeo nosso projeto e 
+essa é sua estrutura:
+
+# Compilador
+CC = gcc
+
+# Flags de compilação
+CFLAGS = -Wall -g
+
+# Nome do executável
+TARGET = meu_programa
+
+# Arquivos fonte
+SRC = main.c funcoes.c
+
+# Arquivos objeto
+OBJ = $(SRC:.c=.o)
+
+# Regra padrão (gera o executável) -- COMEÇA POR AQUI
+all: $(TARGET)
+
+# Como gerar o executável
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
+
+# Como compilar cada .c em .o
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Limpar arquivos compilados
+clean:
+	rm -f $(OBJ) $(TARGET)
+
+
+    -> Apos o uso do make file a compilação se torna fácil:
+
+    make (compila)
+    /.meu_programa (executa)
+    make clean (limpa os arquivos compilados)
