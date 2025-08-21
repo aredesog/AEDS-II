@@ -92,21 +92,7 @@ Capacitar o estudante a **compreender e implementar** estruturas de dados, desen
 
 ---
 
-## 📚 Bibliografia Básica
-- **Szwarcfiter, J. L.; Markenzon, L.** *Estruturas de Dados e Seus Algoritmos* (3ª ed.). LTC, 2010.  
-- **Tenenbaum, A. M.; Langsam, Y.; Augenstein, M. J.** *Estruturas de Dados Usando C* (1ª ed.). Pearson, 1995.  
-- **Celes, W.; Cerqueira, R.; Rangel, J.** *Introdução a Estruturas de Dados* (2ª ed.). Elsevier, 2017.
 
----
 
-## 🚀 Pontos Fortes da Disciplina
-- **Integração teoria-prática**: você aprende e já aplica.
-- Base sólida para programação avançada, banco de dados, IA e desenvolvimento de sistemas.
-- Implementação real de estruturas fundamentais para otimização e eficiência.
-- Conteúdo valorizado em entrevistas e provas técnicas.
 
----
-<div align="center">
-  <p></p>
-  <p>Desenvolvido por <strong>Carlos Pereira</strong></p>
-</div>
+
