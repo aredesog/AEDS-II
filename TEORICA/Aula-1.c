@@ -64,13 +64,29 @@ int buscaBinaria(REGISTRO L[], int x, int n){
     }
     return buscaBin + 1;
 } 
+
+int inserir(REGISTRO L[], int QuantAtual, int Quant, int x){
+    if(QuantAtual <= Quant){
+        if(busca2(L, x, QuantAtual) == 0){
+            L[QuantAtual + 1].chave = x;
+            QuantAtual++;
+            return QuantAtual;
+        }else return 0;
+    }else return -1;
+}
+
+int* remover(REGISTRO L[], int QuantAtual, int Quant, int x){
+    if(QuantAtual >= 0){
+        
+    }else return 0;
+}
     
 
 
 int main(){
 
     REGISTRO L[11] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int b1, b2, bo, bb, opcao = 0;
+    int b1, b2, bo, bb, ins, rem, opcao = 10;
 
     switch (opcao)
     {
@@ -101,6 +117,21 @@ int main(){
             bb = buscaBinaria(L, bb, 10);
         break;
         }
+        case 5:{
+            printf("Digite um numero para inserir no vetor: ");
+            scanf("%d", &ins);
+            ins = inserir(L,10,11,ins);
+            break;
+        }
+        case 6:{
+            printf("Digite um numero para ser removido do vetor: ");
+            scanf("%d", &rem);
+            break;
+        }
+
+         default:
+            opcao = menu();   
+            break;
         
     }   
 
