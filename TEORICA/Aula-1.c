@@ -21,6 +21,11 @@ int busca (int x, REGISTRO L[], int n){
     }
 }
 
+/*
+Esse realiza a busca, entratanto quando se compara o busca com o busca2, se tem diferenças entre eles, em qustão de velocidade e 
+eficiencia, já que o busca roda o vetor todo, e o busca2 so vai té o numero desejado, ou seja, mais eficaz(menor numeros de ifs).
+*/
+
 int busca2(REGISTRO L[], int x, int n){
     int i = 0;
     L[n + 1].chave = x;
@@ -34,7 +39,7 @@ int busca2(REGISTRO L[], int x, int n){
         return 0;       
     }
 }
-//Função de Busca Ordenada
+//Função de Busca Ordenada, só funciona quando o vetor está em ordem.
 int buscaOrd(REGISTRO L[], int x, int n){
     int i = 0;
     L[n + 1].chave = x;
@@ -49,6 +54,7 @@ int buscaOrd(REGISTRO L[], int x, int n){
     }
 }
 
+//Bem eficaz já que faz a divisão do vetor em meios e meios, para facilitar a busca do numero desejado.
 int buscaBinaria(REGISTRO L[], int x, int n){
     int inf = 0,
         sup = n,
@@ -65,6 +71,7 @@ int buscaBinaria(REGISTRO L[], int x, int n){
     return buscaBin + 1;
 } 
 
+//insere um valor no vetor, caso haja espaço para esse tipo de interação.
 int inserir(REGISTRO L[], int QuantAtual, int Quant, int x){
     if(QuantAtual <= Quant){
         if(busca2(L, x, QuantAtual) == 0){
@@ -75,10 +82,24 @@ int inserir(REGISTRO L[], int QuantAtual, int Quant, int x){
     }else return -1;
 }
 
-int* remover(REGISTRO L[], int QuantAtual, int Quant, int x){
-    if(QuantAtual >= 0){
-        
-    }else return 0;
+// Remove um valor do vetor, ajustando o tamanho. Retorna o novo tamanho ou 0 se não encontrou.
+int remover(REGISTRO L[], int QuantAtual, int x){
+    int i, j, pos = -1;
+    // Busca a posição do elemento a ser removido
+    for(i = 0; i < QuantAtual; i++) {
+        if(L[i].chave == x) {
+            pos = i;
+            break;
+        }
+    }
+    if(pos == -1) { ;
+        return 0;
+    }
+    // Desloca os elementos para "tapar o buraco"
+    for(j = pos; j < QuantAtual - 1; j++) {
+        L[j] = L[j+1];
+    }
+    return QuantAtual - 1;
 }
     
 
