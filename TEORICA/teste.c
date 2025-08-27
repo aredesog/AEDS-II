@@ -10,15 +10,29 @@ a Alocação Sequencial, e isso também ocorre com a Inclusão.
 */
 
 
-typedef struct
-{
-    int chave
+typedef struct REGISTRO {
+    
+    int chave;
+    struct REGISTRO *prox;
 
 }REGISTRO;
+ 
 
-int buscaEncadeada(REGISTRO L[], int* pont, int* ant){
+int buscaEncadeada(REGISTRO* ptlista, REGISTRO **pont, REGISTRO **ant, int valor){
 
+    *ant = ptlista;
+    *pont = NULL;
 
+    REGISTRO* ptr = ptlista->prox;
+
+    while(ptr->chave != NULL){
+        if(ptr->chave < valor){
+            *ant = &ptr;
+            *ptr = ptr->prox;
+        } else if(ptr->chave = valor){
+            *pont = &ptr;
+        }
+    }
 }
 
 int main() {
@@ -31,6 +45,6 @@ int valor;
 printf("Qual valor você deseja buscar? ");
 scanf("%d", &valor);
 
-buscaEncadeada(L, &pont, &ant);
+buscaEncadeada( &ptlista, &pont, &ant, valor);
 
 }
