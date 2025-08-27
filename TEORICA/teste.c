@@ -18,24 +18,6 @@ typedef struct
 
 int buscaEncadeada(REGISTRO L[], int* pont, int* ant){
 
-    int* ptlista = L;
-    int* ptr;
-
-    *ant = *ptlista;
-    *pont = NULL;
-    *ptr = ptlista
-
-
-    while(*ptr =! 0){
-        if(*ptr.chave < L[]){
-            *ant = *ptr;
-            *ptr = *ptr.prox;
-        } else if(ptr.chave = L[]){
-            *pont = *ptr;
-            *ptr = NULL;
-        }
-
-    }
 
 }
 
