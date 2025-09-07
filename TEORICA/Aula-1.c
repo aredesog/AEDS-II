@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define TAM 10
 
 typedef struct {
     int chave;

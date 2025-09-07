@@ -74,6 +74,10 @@ int obtem_elemento(struct pilha* pilha) {
 	return pilha->items[pilha->topo]; 
 } 
 
+int* itens(){
+    
+}
+
 
 int main() { 
     int val, n;
