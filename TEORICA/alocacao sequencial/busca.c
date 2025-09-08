@@ -35,5 +35,5 @@ int busca2(int x){
     }else{
         return -1; //Caso nao seja, a chave nao se encontra no vetor e retornamos -1
     }
-
+    
 }
