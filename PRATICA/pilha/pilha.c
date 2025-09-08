@@ -23,15 +23,6 @@ struct pilha* criar_pilha(int tamanho) {
 	return pilha; 
 } 
 
-bool ehCheia(struct pilha* pilha) { 
-    // Se topo == tamanho - 1, quer dizer que a pilha é cheia
-	if (pilha->topo == pilha->tamanho - 1) {
-        return (true);
-    }
-    // Caso contrário, ela não está cheia
-    return (false);
-} 
-
 bool ehVazia(struct pilha* pilha) { 
 	// Se o topo == -1, então a pilha é vazia
     // Verificar que isto é verdade na criação da pilha
@@ -42,10 +33,10 @@ bool ehVazia(struct pilha* pilha) {
 } 
 
 void push(struct pilha* pilha, int item) { 
-	// Se a pilha estiver cheia, não tem como inserir nenhum novo elemento
-    if (ehCheia(pilha)) {
-		printf("\nPilha cheia. Impossível inserir elementos");
-        return; 
+	// Se a pilha encher, dobramos o tamanho dela e realocamos
+    if (pilha->topo == pilha->tamanho - 1) {
+		pilha->tamanho *= 2;
+        pilha->items = (int*) realloc(pilha->items, pilha->tamanho * sizeof(int));
     }
     // Aumenta o topo da pilha
     pilha->topo++;
@@ -74,8 +65,11 @@ int obtem_elemento(struct pilha* pilha) {
 	return pilha->items[pilha->topo]; 
 } 
 
-int* itens(){
-    
+void listar_pilha (struct pilha* pilha){
+    // Percorrer e exibe toda a pilha
+    for (int i = 0; i <= pilha->topo; i++){
+        printf("\n%d", pilha->items[i]);
+    }
 }
 
 
@@ -85,12 +79,12 @@ int main() {
     // Cria pilha com 5 posições
     struct pilha* pilha = criar_pilha(5); 
     do {
-        printf("\n************************* MENU ************************");
+        printf("\n\n************************* MENU ************************");
 	    printf("\n1. Push");
 	    printf("\n2. Pop");
 	    printf("\n3. Obtém elemento");
 	    printf("\n4. Pilha vazia?");
-        printf("\n5. Pilha cheia?");
+	    printf("\n5. Listar pilha");
 	    printf("\n6. Sair");
 	    printf("\n Digite sua escolha : ");
 	    scanf("%d",&n);
@@ -113,26 +107,31 @@ int main() {
                 } else {
                     printf("\nPilha não está vazia");
                 }
-                break;
-            case 5: 
-                aux = ehCheia(pilha);
+                break;       
+            case 5:
+                aux = ehVazia(pilha);
+                // Verificar se a pilha está vazia
                 if (aux) {
-                    printf("\nPilha cheia");
+                    printf("\nPilha vazia!!");
                 } else {
-                    printf("\nPilha não está cheia");
+                    // Listar todos os elementos da pilha
+                    listar_pilha(pilha);
                 }
-                break;         
+                break;
             case 6:
                 return (1);
-                break;
+                break;                
             default: printf("\nOpção errada!");
                 break;
         }
 	} while(1);
-    
+
+    // Liberar memória ao encerrar o programa
+    free(pilha->items);
+    free(pilha);
+
     return (0);
  }
-
 
 
 
