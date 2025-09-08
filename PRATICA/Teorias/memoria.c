@@ -12,7 +12,7 @@ int main(){
     printf("%d\n", sizeof(int));
 
 
-    for(int i = 0; i < num_elementos; i++){
+for(int i = 0; i < num_elementos; i++){
         printf("%p\n", (pont + i)); // endereço contido em pont + i * sizeof(int) |(4bytes)|
     }
 
@@ -21,3 +21,10 @@ int main(){
     
 
 }    
+
+/*
+        O trabalho com ponteiros e memoria da aula 4, foi baseado na explicação de aritimetica com ponteiros, no qual se passa de um endereço de memoria p/
+    outro atraves da soma com um inteiro * o sizeof(int), pois ai ira redefinir o local correto.
+        Já na função malloc temos uma auxiliar de memoria, na qual ela guarda valores para certos momentos necessarios entretanto necessita 
+    ser liberada apos sua ultilização com o free(variavel!)        
+*/
