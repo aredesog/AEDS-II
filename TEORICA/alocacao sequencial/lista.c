@@ -17,3 +17,8 @@ int inserir(No no){ //passa o paramentro de No com aplido de no, para evitar o u
         }
 
 }
+
+No *removeLista(int x){
+
+
+}
