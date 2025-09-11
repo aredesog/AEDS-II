@@ -19,6 +19,18 @@ int inserir(No no){ //passa o paramentro de No com aplido de no, para evitar o u
 }
 
 No *removeLista(int x){
+    No *retorno = NULL; //variavel que guarda o indice do item a ser removido
 
+    if(m != 0){ 
+        int indice = busca2(x); //realiza a busca do numero a ser removido
 
+        if(indice != -1){ 
+            retorno = &L[indice];// salva o endereço a ser removido(ponteiro necessita de endereço)
+                for(int i = indice; i < m; i++){ //loop para corrigir os valores da lista
+                    L[i] = L[i + 1]; //salva o prox. valor da lista no valor atual
+                }
+                m--; //diminui a lista atual
+        } 
+    }   
+    return retorno;
 }
