@@ -1,0 +1,38 @@
+
+A alocação encadeada e a alocação sequencial são formas diferentes de organizar e gerenciar estruturas de dados na memória:
+
+•Alocação sequencial: 
+    Os elementos são armazenados em posições contíguas da memória, como em arrays ou vetores. 
+    O acesso é rápido (índice direto), mas inserir ou remover elementos pode exigir deslocamento dos dados. 
+    O tamanho é fixo ou cresce de forma limitada.
+
+    •Lista sequencial: 
+        Permite inserir, remover e acessar elementos em qualquer posição do vetor. 
+        Pode exigir deslocamento dos elementos para manter a ordem após inserções ou remoções.
+
+    •Pilha sequencial: 
+        Segue o princípio LIFO (Last In, First Out). Inserção e remoção só acontecem no topo do vetor. 
+        O acesso é restrito ao último elemento inserido.
+
+    •Fila sequencial: 
+        Segue o princípio FIFO (First In, First Out). Inserção ocorre no final do vetor e remoção no início. 
+        Pode exigir deslocamento dos elementos após remoção, ou uso de índices para controlar início e fim.
+
+•Alocação encadeada: 
+    Os elementos são armazenados em posições não contíguas, cada um apontando para o próximo 
+    (como listas encadeadas, pilhas e filas encadeadas). Permite inserção e remoção eficiente, sem necessidade de deslocar outros elementos.
+    O tamanho é dinâmico, limitado apenas pela memória disponível.
+
+    •Lista encadeada: 
+        Permite inserir, remover e acessar elementos em qualquer posição. 
+        Cada elemento aponta para o próximo (e, em listas duplamente encadeadas, também para o anterior). 
+        É flexível e usada para operações variadas.
+
+    •Pilha encadeada: 
+        Segue o princípio LIFO (Last In, First Out). Só permite inserir (push) e remover (pop) elementos no topo da pilha. 
+        Usada para situações onde o último elemento inserido deve ser o primeiro a ser removido.
+
+    •Fila encadeada: 
+        Segue o princípio FIFO (First In, First Out). Elementos são inseridos no final (enqueue) e removidos do início (dequeue). 
+        Usada para processar elementos na ordem em que chegam.   
+
