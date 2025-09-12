@@ -23,9 +23,9 @@ extern fila fi[6];
 extern int n;
 extern int n2;
 extern int m;
-extern int topo;
-extern int f;
-extern int r;
+extern int topo; //variavel topo da pilha
+extern int f; //variaveldo inico da fila
+extern int r; //variavel de fim de fila
 
 int busca1(int x);
 int busca2(int x);
