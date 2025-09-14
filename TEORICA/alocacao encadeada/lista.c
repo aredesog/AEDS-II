@@ -31,4 +31,13 @@ void buscaLista(no *ptlista, int x, no **ant, no **pont){ //ponteiros para auxil
 int insereLista(no *ptlista, no *inserido){
     int retorno = -1; //retorna caso não dê
     no *ant; no *pont; //ponteiros de auxilio
+
+    buscaLista(ptlista, inserido->chave, &ant, &pont); //realiza a busca do valor a ser inserido
+
+    if(inserido->chave == NULL){ //se nao estiver lá, pode ser inserido
+    inserido->prox = ant->prox; //faz o ponteiro do valor inserido ser igual ao ponteiro do anterior ao inserido, no caso o ponteiro do inserido rouba a função do anterior a ele, apontando para o valor seguinte
+    ant->prox = inserido; //e o ponteiro que foi roubado aponta para o valor inserido, assim deixando ordenada a lista novamente
+    retorno = 0; //retorna 0 pois a inserção foi um sucesso
+    }
+    return retorno; //retorna para a main
 }

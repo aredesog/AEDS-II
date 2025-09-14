@@ -9,6 +9,7 @@ typedef struct pilha {
 
 void inserePilha(no **topo, no *no){
 
+    
 }
 
 
