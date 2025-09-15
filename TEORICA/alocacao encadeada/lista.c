@@ -141,3 +141,24 @@ int main(){
 
     return 0;
 }
+
+
+
+
+/*
+no *aux1 = ptlista->prox;
+
+        while (aux1 != NULL) { //enquanto nao chegar ao final continua a busca
+            
+            if(aux1 < x){ //se ptlista for = ao valor procurado
+                *ant = aux1; //passa o ant pra frente
+                aux1 = ptlista->prox; //passa o ptlista pra frente
+
+            }else if(ptlista == x){ //achado o valor 
+                *pont = ptlista; //grava o valor em pont
+                ptlista = NULL;
+            } 
+        } 
+        pont = NULL; //nao achou o valor na lista 
+
+        */
