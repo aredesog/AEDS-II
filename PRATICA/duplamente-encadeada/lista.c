@@ -92,26 +92,26 @@ void apagar(int ele) {
 	}
 	printf("\n Valor não encontrado! ");
  }
- 
-void apagar_inicio() {	
-	tmp = p;
-	if (p == NULL) {
+
+void apagar_inicio(struct listaDupla *lista) {	
+	tmp = lista->inicio;
+	if (lista->inicio == NULL) {
 		printf("\n Nenhum elemento deletado ");
     } else {
-		printf("\nElemento deletado - %d", p->data);
-        p = p->next;
+		printf("\nElemento deletado - %d", lista->inicio->data);
+        lista->inicio = lista->inicio->next;
         free(tmp);
 	}
  }
 
-void apagar_fim() {	
-	tmp=p;
+void apagar_fim(struct listaDupla *lista) {	
+	tmp = lista->fim;
 	struct node* pre;
-	if(p == NULL) {
+	if( lista->fim == NULL) {
 		printf("\n Nenhum elemento deletado ");
-    } else if (p->next == NULL) {
-		printf("\nElemento deletado - %d", p->data);
-		p = NULL;
+    } else if (lista->fim->next == NULL) {
+		printf("\nElemento deletado - %d", lista->fim->data);
+		lista->fim = NULL;
 	} else {
 		while (tmp->next != NULL) {
 			pre=tmp;
@@ -123,31 +123,31 @@ void apagar_fim() {
 	}
 }
 
-void imprimir() {
-	tmp = p;
+void imprimir(struct listaDupla *lista) {
+	tmp = lista->inicio;
  	while (tmp != NULL) {
         printf("\n %d",tmp->data);
 	 	tmp = tmp->next;
 	}
 }
 
-int obter_primeiro(void) {
-    tmp = p;
-	if (p == NULL) {
+int obter_primeiro(struct listaDupla *lista) {
+    tmp = lista->inicio;
+	if (lista->inicio == NULL) {
 		printf("\n Nenhum elemento encontrado ");
     } else {
-		return (p->data);
+		return (lista->inicio->data);
 	}
 }
 
-int obter_ultimo(void) {
-    tmp = p;
+int obter_ultimo(struct listaDupla *lista) {
+    tmp = lista->inicio;
 	struct node* pre;
-	if (p == NULL) {
+	if (lista->inicio == NULL) {
 		printf("\n Nenhum elemento encontrado ");
-        return (0);
-    } else if (p->next==NULL) {
-		return(p->data);
+        return 0;
+    } else if (tmp->next == NULL) {
+		return(lista->inicio->data);
 	} else {
 		while (tmp->next!=NULL) {
 			pre=tmp;
