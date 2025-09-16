@@ -1,14 +1,36 @@
 #ifndef _H_LISTA
 #define _H_LISTA
 
-void inserir_fim(int);
-void inserir_inicio(int);
-void apagar(int);
-void apagar_inicio(void);
-void apagar_fim(void);
-bool ehVazia(void);
-int obter_primeiro(void);
-int obter_ultimo(void);
-void imprimir();
+#include <stdbool.h>
+
+// Declaração antecipada para permitir o uso de ponteiros nas assinaturas
+struct listaDupla;
+
+// Operações básicas
+bool ehVazia(struct listaDupla *lista);
+void inserir_inicio(struct listaDupla *lista, int elemento);
+void inserir_fim(struct listaDupla *lista, int elemento);
+void inserir_posicao(struct listaDupla *lista, int valor, int posicao);
+void apagar(struct listaDupla *lista, int elemento);
+void apagar_inicio(struct listaDupla *lista);
+void apagar_fim(struct listaDupla *lista);
+
+// Impressão
+void imprimirIncio(struct listaDupla *lista);
+void imprimirFim(struct listaDupla *lista);
+
+// Consulta
+int obter_primeiro(struct listaDupla *lista);
+int obter_ultimo(struct listaDupla *lista);
+int buscar_posicao(struct listaDupla *lista, int posicao);
+
+// Remoção por posição
+void remover_posicao(struct listaDupla *lista, int posicao);
+
+// Compatibilidade: wrapper para a função usada no main de lista.c
+static inline void imprimir(struct listaDupla *lista) {
+	// Por padrão, imprime a partir do início
+	imprimirIncio(lista);
+}
 
 #endif
