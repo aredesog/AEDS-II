@@ -198,7 +198,9 @@ int buscar_posicao(struct listaDupla *lista, int posicao){
 
 int main() { 
     int val, n;
-    struct listaDupla *lista;
+    
+    struct listaDupla *lista = malloc(sizeof(struct listaDupla));
+    
     lista->fim = NULL;
     lista->inicio = NULL;
     do {
