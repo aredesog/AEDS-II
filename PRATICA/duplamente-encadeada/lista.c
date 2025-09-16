@@ -5,35 +5,74 @@
 
 struct node {
     int data;
-    struct node *next, *ant;
-}*p,*tmp,*tmp1;
+    struct node *next, *prev; //struct principal para andar na lista
+}*tmp;
 
+struct listaDupla{
+    struct node *inicio, *fim; //struct auxiliar para definir inicio e fim
+};
 
-void inserir_fim(int elemento) {
-    tmp = p;
-    tmp1 = (struct node*) malloc (sizeof(struct node));
-    tmp1->data=elemento;
-    tmp1->next=NULL;
-    if (p == NULL) {
-        p = tmp1;
+bool ehVazia(struct listaDupla *lista) {
+    if (lista->inicio == NULL) {
+        return (1);
     } else {
-        while (tmp->next!=NULL) {
-            tmp = tmp->next;
-        }
-        tmp->next = tmp1;
+        return (0);
+    }
+}
+
+void inserir_inicio(struct listaDupla *lista,int elemento) { //passar a struct como parametro 
+    tmp = (struct node*) malloc (sizeof(struct node));
+	tmp->data=elemento; //salva o valor em elemento que vai para o novo no
+    tmp->prev = NULL; //como é no incio o anterior sempre sera nulo
+    if(ehVazia(lista)){ //tem nada na lista, o primeiro a ser inserido é o seu
+        lista->inicio = tmp;
+        lista->fim = tmp;
+        tmp->next = NULL;
+        return;
+    }
+    tmp->data = elemento;
+	tmp->next = lista->inicio; // faz o novo no virar o inicio
+    lista->inicio->prev = tmp; //faz o anterior ao que voce inseriu ser o novo novamente
+}
+
+void inserir_fim(struct listaDupla *lista,int elemento) {
+    tmp = (struct node*) malloc (sizeof(struct node));
+    tmp->data = elemento;
+    tmp->next=NULL;
+    if (ehVazia) {
+        inserir_inicio(lista, elemento);
+    } else {       
+        tmp->prev = lista->fim; //troca os ponteiros do inico para o fim 
+        lista->fim->next = tmp; //de forma que fique semelhante ao inserir inicio
+        lista->fim = tmp;
     }
  }
 
-void inserir_inicio(int elemento) {
-	 tmp = p;
-	 tmp1 = (struct node*) malloc (sizeof(struct node));
-	 tmp1->data=elemento;
-	 tmp1->next = p;
-	 p=tmp1;
-}
+void inserir_posicao(struct listaDupla *lista,int valor,int posicao){
+    tmp = (struct node*) malloc (sizeof(struct node));
+    tmp->data = valor;
+    if(!ehVazia(lista)){
+        int i = 0;
+        struct node *prev, *tmp1 = lista->inicio;
+        while(tmp->next != NULL && i < posicao - 1){// aqui ele termina com o prev um atras do tmp com o tmp sendo a posição desejada
+            i++;
+            prev = tmp1;
+            tmp1 = tmp1->next;
+        }
+        if(posicao == 1){
+            printf("O elemento foi inserido no inicio da lista");
+            inserir_inicio(lista,valor);
+        }else{
+            printf("o elemento foi posicionado na posicao %d",posicao);
+            tmp->prev = prev;
+            prev->next = tmp;
+            prev->next = tmp1;
+            tmp1->prev = tmp;
+        }
+    }else inserir_inicio(lista, valor);
+};
 
 void apagar(int ele) {
-    tmp = p;
 	struct node *pre=tmp;
 	while (tmp != NULL) {
 		if (tmp->data==ele) {
@@ -60,10 +99,11 @@ void apagar_inicio() {
 		printf("\n Nenhum elemento deletado ");
     } else {
 		printf("\nElemento deletado - %d", p->data);
-		p = p->next;
+        p = p->next;
+        free(tmp);
 	}
  }
- 
+
 void apagar_fim() {	
 	tmp=p;
 	struct node* pre;
@@ -78,17 +118,11 @@ void apagar_fim() {
 			tmp=tmp->next;
 		}
 		pre->next=NULL;
+        free(pre);
 		printf("\nElemento deletado - %d", tmp->data);
 	}
 }
 
-bool ehVazia() {
-    if (p == NULL) {
-        return (1);
-    } else {
-        return (0);
-    }
-}
 void imprimir() {
 	tmp = p;
  	while (tmp != NULL) {
@@ -124,65 +158,131 @@ int obter_ultimo(void) {
 	}
 }
 
-void main() { 
-  int val, n;
-  p = NULL;
-  do {
-    printf("\n************************* MENU ************************");
-	printf("\n1.Inserir no fim");
-	 printf("\n2.Inserir no início");
-	 printf("\n3.Apagar um elemento em particular");
-	 printf("\n4.Apagar do início");
-	 printf("\n5.Apagar do fim");
-	 printf("\n6.Imprimir lista");
-	 printf("\n7.É vazia?");
-     printf("\n8.Obter primeiro");
-     printf("\n9.Obter último");
-     printf("\n0.Sair");
-	 printf("\nEntre sua opção : ");
-	 scanf("%d",&n);
-	 switch(n) {
-        case 1: printf("\nDigite o valor ");
-			    scanf("%d",&val);
-			    inserir_fim(val);
-			    break;
-		 case 2: printf("\nDigite o valor ");
-			    scanf("%d",&val);
-			    inserir_inicio(val);
-			    break;
-		 case 3: printf("\nDigite o valor ");
-			    scanf("%d",&val);
-			    apagar(val);
-			    break;
-		 case 4: 
-			    apagar_inicio();
-			    break;
-		 case 5: 
-			    apagar_fim();
-			    break;
-		 case 6: imprimir();
-		 	    break;
-		 case 7: if (ehVazia() == 1) {
-                    printf("\nLista vazia");
-                } else {
-                    printf("\nLista não vazia");
-                }
-                break;
-        case 8: val = obter_primeiro();
-                if (val != 0) {
-                    printf("%d", val);
-                }
-		 	    break;
-        case 9: val = obter_ultimo();
-                if (val != 0) {
-                    printf("%d", val);
-                }
-		 	    break;
-        case 0: exit(0);
-		 	    break;
-		default: printf("\n Opção errada!");
-		 	    break;
-		}
-	} while(1);
+
+
+void remover_posicao(int posicao){
+    if(p != NULL){
+    int i = 0;
+    tmp = p;
+    while(tmp->next != NULL && i < posicao - 1){
+        i = i + 1;
+        tmp1 = tmp;
+        tmp = tmp->next;
+    }
+    if(posicao == 1){
+        p = p->next;
+        tmp1->next = NULL;
+    }else{
+        tmp1->next = tmp->next;
+        tmp->next = NULL;
+        free(tmp);
+    }   
+    }else printf("A lista esta vazia");
+}
+
+int buscar_posicao(int posicao){
+    if(p != NULL){
+        int i = 1;
+        tmp = p;
+        while(tmp->next != NULL && i < posicao){
+            i++;
+            tmp = tmp->next;
+        }
+        if(i == posicao){
+            return tmp->data;
+        }else if(posicao > i) return 0;
+    }else return 0;
+}
+
+int main() { 
+    int val, n;
+    struct listaDupla *lista;
+    lista->fim = NULL;
+    lista->inicio = NULL;
+    do {
+        printf("\n************************* MENU ************************");
+        printf("\n1.Inserir no fim");
+        printf("\n2.Inserir no início");
+        printf("\n3.Apagar um elemento em particular");
+        printf("\n4.Apagar do início");
+        printf("\n5.Apagar do fim");
+        printf("\n6.Imprimir lista");
+        printf("\n7.É vazia?");
+        printf("\n8.Obter primeiro");
+        printf("\n9.Obter último");
+        printf("\n10.Inserir na posicao");
+        printf("\n11.Remover na posicao");
+        printf("\n12.Buscar o valor na posicao");
+        printf("\n0.Sair");
+        printf("\nEntre sua opção : ");
+        scanf("%d",&n);
+        switch(n) {
+            case 1: printf("\nDigite o valor ");
+                    scanf("%d",&val);
+                    inserir_fim(val);
+                    break;
+            case 2: printf("\nDigite o valor ");
+                    scanf("%d",&val);
+                    inserir_inicio(lista,val);
+                    break;
+            case 3: printf("\nDigite o valor ");
+                    scanf("%d",&val);
+                    apagar(val);
+                    break;
+            case 4: 
+                    apagar_inicio();
+                    break;
+            case 5: 
+                    apagar_fim();
+                    break;
+            case 6: imprimir();
+                    break;
+            case 7: if (ehVazia() == 1) {
+                        printf("\nLista vazia");
+                    } else {
+                        printf("\nLista não vazia");
+                    }
+                    break;
+            case 8: val = obter_primeiro();
+                    if (val != 0) {
+                        printf("%d", val);
+                    }
+                    break;
+            case 9: val = obter_ultimo();
+                    if (val != 0) {
+                        printf("%d", val);
+                    }
+                    break;
+            case 10:{
+                    int valor, posicao;
+                    printf("Digite um valor para ser incerido na posicao desejada:");
+                    scanf("%d",&valor);
+                    printf("Digite a posicao desejada: ");
+                    scanf("%d", &posicao);
+                    inserir_posicao(valor,posicao);
+                    }
+                    break;
+            case 11:{
+                    int posicao;
+                    printf("Digite a posicao que deve ser removida: ");
+                    scanf("%d", &posicao);
+                    remover_posicao(posicao);
+            }
+            break; 
+            case 12:{
+                    int posicao, valor;
+                    printf("Digite a posicao que deve ser buscada");
+                    scanf("%d", &posicao);
+                    valor = buscar_posicao(posicao);
+                    if(valor != 0) printf("%d",valor);
+                    else printf("nao foi encontrado nenhum valor nessa posicao");
+            }
+            break;
+            case 0: exit(0);
+                    break;
+            default: printf("\n Opção errada!");
+                    break;
+            }
+        } while(1);
 
  }
