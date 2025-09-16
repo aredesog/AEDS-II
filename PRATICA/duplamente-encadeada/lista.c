@@ -237,8 +237,10 @@ int main() {
             case 5: 
                     apagar_fim(lista);
                     break;
-            case 6: imprimir();
+            case 6: imprimirIncio(lista);
                     break;
+            case 13:imprimirFim(lista);
+                break;
             case 7: if (ehVazia(lista) == 1) {
                         printf("\nLista vazia");
                     } else {
