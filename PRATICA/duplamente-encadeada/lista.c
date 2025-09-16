@@ -5,8 +5,9 @@
 
 struct node {
     int data;
-    struct node *next;
+    struct node *next, *ant;
 }*p,*tmp,*tmp1;
+
 
 void inserir_fim(int elemento) {
     tmp = p;
