@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  Repositório com as atividades e projetos desenvolvidos na disciplina de Algoritmos e Estruturas de Dados II, cursada no 2º semestre de 2024, 
+  Repositório com as atividades e projetos desenvolvidos na disciplina de Algoritmos e Estruturas de Dados II, cursada no 2º semestre de 2025, 
   como parte do <strong>Bacharelado em Ciências da Computação</strong> pela <em>Universidade Federal de Alfenas - MG.</em>
 </p>
 
