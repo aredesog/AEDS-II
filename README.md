@@ -18,9 +18,9 @@ Todos os projetos foram implementados utilizando a linguagem **C** e incluem **m
 
 ## 🧩 O que contém
 
-- Exercícios e projetos da disciplina AEDS II implementados em **C** (com alguns arquivos em C++). :contentReference[oaicite:6]{index=6}  
+- Exercícios e projetos da disciplina AEDS II implementados em **C** (com alguns arquivos em C++).
 - Vários trabalhos práticos, provavelmente envolvendo estruturas de dados mais avançadas, manipulação de arquivos, algoritmos de ordenação, busca, listas encadeadas, árvores, etc. (supondo baseado no conteúdo típico de AEDS II).  
-- Material teórico e prático distribuído entre pastas **TEÓRICA** e **PRÁTICA**. :contentReference[oaicite:7]{index=7}  
+- Material teórico e prático distribuído entre pastas **TEÓRICA** e **PRÁTICA**. 
 
 ### Recursos do Repositório:
 - **Makefiles:**  
