@@ -16,6 +16,12 @@
 Este repositório contém os códigos desenvolvidos ao longo da disciplina de **Algoritmos e Estruturas de Dados II**.  
 Todos os projetos foram implementados utilizando a linguagem **C** e incluem **makefiles** para facilitar a compilação e a organização dos arquivos. 
 
+## 🧩 O que contém
+
+- Exercícios e projetos da disciplina AEDS II implementados em **C** (com alguns arquivos em C++). :contentReference[oaicite:6]{index=6}  
+- Vários trabalhos práticos, provavelmente envolvendo estruturas de dados mais avançadas, manipulação de arquivos, algoritmos de ordenação, busca, listas encadeadas, árvores, etc. (supondo baseado no conteúdo típico de AEDS II).  
+- Material teórico e prático distribuído entre pastas **TEÓRICA** e **PRÁTICA**. :contentReference[oaicite:7]{index=7}  
+
 ### Recursos do Repositório:
 - **Makefiles:**  
   - `make all`: Compila o projeto de forma simples e eficiente.  
