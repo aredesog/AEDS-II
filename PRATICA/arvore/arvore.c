@@ -59,7 +59,7 @@ struct node* remove_raiz(struct node *root){
     if(root != NULL){
         
         //1° descer uma para a esquerda e tudo para a direita para achar o numero mais proximo para ser raiz
-        
+
         while(q->direita != NULL){
             p = q;
             q = q->direita;
@@ -72,11 +72,25 @@ struct node* remove_raiz(struct node *root){
         
         //feito
         //excluir a antiga raiz
-        p->direita = NULL;
+        //p->direita = NULL;
+        //p = root; // retorna o pai a raiz para repetir o ciclo
+        //q = root->esquerda; //retorna o filho ao local de origem
     }else {
         printf("NAO EXISTE ARVORE");
         return NULL;
     }
+
+    if(p == root){
+        // q é filho direto da raiz
+        root->esquerda = q->esquerda;
+    } else {
+        // q não é filho direto da raiz  
+        p->direita = q->esquerda;
+    }
+
+    free(q); 
+    return root;
+
 }
 
 void preOrdem (struct node* raiz) {
@@ -126,9 +140,11 @@ int main() {
     emOrdem(root);
     printf("\n");
 
-    if(root != NULL){ //se a raiz for diferente de Nulo, remove e reexibe em oredem
-        remove_raiz(root);
+    while(root != NULL){ //se a raiz for diferente de Nulo, remove e reexibe em oredem
+        root = remove_raiz(root);
+        printf("Nova arvore em ordem apos remover raiz: \n");
         emOrdem(root);   
+        printf("\n");
     }
 
     // Valor a ser buscado
