@@ -69,7 +69,7 @@ struct node* remove_raiz(struct node *root){
         //2° passo -> trocar os valores da raiz com o no achado/nova raiz
 
         root->valor = q->valor;
-
+        
         //feito
         //excluir a antiga raiz
         p->direita = NULL;
@@ -124,8 +124,9 @@ int main() {
     inserir(root, 80);
  
     emOrdem(root);
+    printf("\n");
 
-    while(root != NULL){
+    if(root != NULL){ //se a raiz for diferente de Nulo, remove e reexibe em oredem
         remove_raiz(root);
         emOrdem(root);   
     }
@@ -135,7 +136,7 @@ int main() {
  
     // Buscando na árvore
     if (buscar(root, valor) == NULL) {
-        printf("%d não encontrado\n", valor);
+        printf("%d nao encontrado\n", valor);
     } else {
         printf("%d encontrado\n", valor);
     }
@@ -145,7 +146,7 @@ int main() {
  
     // Buscando na árvore
     if (buscar(root, valor) == NULL) {
-        printf("%d não encontrado\n", valor);
+        printf("%d nao encontrado\n", valor);
     } else {
         printf("%d encontrado\n", valor);
     }
