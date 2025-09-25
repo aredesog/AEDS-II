@@ -34,6 +34,21 @@ int remove_numero(int L[]){
     return 0; // Indica que não encontrou
 }
 
+int adiciona_valor(){
+
+    int valor;
+
+    printf("Qual valor quer adicionar: ");
+    scanf("%d", &valor);
+
+    //verifica se esta cheio
+
+    //se nao insere o valor em ordem crescente 
+
+    //mostra o novo vetor
+    
+}
+
 int main(){
     int L[10] = {1,2,3,4,5,6,7,8,9,10};
 
