@@ -93,33 +93,34 @@ struct node* remove_raiz(struct node *root){
 
 }
 
-void preOrdem (struct node* raiz) {
+void preOrdem (struct node* raiz) { // função rescursiva
     if (raiz == NULL){
         return;
     }
     printf("%d\n", raiz->valor);
-    preOrdem(raiz->esquerda);
-    preOrdem(raiz->direita);
+    preOrdem(raiz->esquerda);// função rescursiva
+    preOrdem(raiz->direita);// função rescursiva
 }
 
 void emOrdem (struct node* raiz) {
     if (raiz == NULL){
         return;
     }
-    emOrdem(raiz->esquerda);
+    emOrdem(raiz->esquerda);// função rescursiva
     printf("%d\n", raiz->valor);
-    emOrdem(raiz->direita);
+    emOrdem(raiz->direita);// função rescursiva
 }
 
 void posOrdem (struct node* raiz) {
     if (raiz == NULL){
         return;
     }
-    posOrdem(raiz->esquerda);
-    posOrdem(raiz->direita);
+    posOrdem(raiz->esquerda);// função rescursiva
+    posOrdem(raiz->direita);// função rescursiva
     printf("%d\n", raiz->valor);
 }
 
+//slide guia melhor sobre como funciona cada tipo de ordem
  
  
 int main() {
