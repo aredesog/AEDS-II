@@ -12,4 +12,4 @@ struct node* buscar(struct node* root, int valor);
 struct node* remover(struct node* );
 
 
-#endif // _H_ARVORE
+#endif  // _H_ARVORE
