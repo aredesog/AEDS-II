@@ -139,7 +139,7 @@ int main() {
     struct node* root = NULL;
 
     // Insere o nó inicial (raiz)
-    root = inserir(root,Construir uma árvore balanceada a partir da não-balanceada 50);
+    root = inserir(root,50);
 
     // Insere outros nós
     inserir(root, 90);
