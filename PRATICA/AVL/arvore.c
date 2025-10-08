@@ -1,7 +1,14 @@
 #include<stdio.h> 
 #include<stdlib.h> 
-#include "arvore.h"
+//#include "arvore.h"
   
+struct Node {
+    int valor;
+    struct Node *esquerda;
+    struct Node *direita;
+    int altura;
+};
+
 // Obtem a altura da AVL
 int altura(struct Node *N) { 
     if (N == NULL) {
