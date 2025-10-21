@@ -1,6 +1,6 @@
 #include<stdio.h> 
 #include<stdlib.h> 
-//#include "arvore.h"
+#include "arvore.h"
   
 struct Node {
     int valor;
@@ -55,7 +55,7 @@ struct Node *direitaRotate(struct Node *y) {
 // Faz a rotação a esquerda na raiz x
 struct Node *esquerdaRotate(struct Node *x) { 
     struct Node *y = x->direita; 
-    struct Node *T2 = x->esquerda;
+    struct Node *T2 = y->esquerda;  // CORREÇÃO: T2 é a subárvore esquerda de y
     
     y->esquerda = x; 
     x->direita = T2; 
@@ -64,7 +64,6 @@ struct Node *esquerdaRotate(struct Node *x) {
     x->altura = max(altura(x->esquerda), altura(x->direita)) + 1; 
     y->altura = max(altura(y->esquerda), altura(y->direita)) + 1; 
   
-    
     return y; 
 } 
   
@@ -158,6 +157,79 @@ struct Node* inserir(struct Node* node, int valor) {
     return node; 
 } 
   
+// Retorna o nó com o menor valor na árvore (usado na remoção)
+struct Node* minValueNode(struct Node* node) {
+    struct Node* current = node;
+    while (current && current->esquerda != NULL)
+        current = current->esquerda;
+    return current;
+}
+
+// Remove um valor da AVL e retorna a nova raiz da subárvore
+struct Node* remover(struct Node* root, int valor) {
+    if (root == NULL)
+        return root;
+
+    // 1) BST delete padrão
+    if (valor < root->valor) {
+        root->esquerda = remover(root->esquerda, valor);
+    } else if (valor > root->valor) {
+        root->direita = remover(root->direita, valor);
+    } else {
+        // nó com um ou nenhum filho
+        if (root->esquerda == NULL || root->direita == NULL) {
+            struct Node* temp = root->esquerda ? root->esquerda : root->direita;
+            if (temp == NULL) {
+                // sem filhos
+                temp = root;
+                root = NULL;
+                free(temp);
+            } else {
+                // um filho: copia conteúdo e libera temp
+                *root = *temp;
+                free(temp);
+            }
+        } else {
+            // nó com dois filhos: pega o sucessor in-order (menor da direita)
+            struct Node* temp = minValueNode(root->direita);
+            root->valor = temp->valor;
+            root->direita = remover(root->direita, temp->valor);
+        }
+    }
+
+    // Se a árvore tinha apenas um nó
+    if (root == NULL)
+        return root;
+
+    // 2) Atualiza altura
+    root->altura = 1 + max(altura(root->esquerda), altura(root->direita));
+
+    // 3) Verifica balanceamento e rotaciona se necessário
+    int balance = balanceamento(root);
+
+    // esquerda esquerda
+    if (balance > 1 && balanceamento(root->esquerda) >= 0)
+        return direitaRotate(root);
+
+    // esquerda direita
+    if (balance > 1 && balanceamento(root->esquerda) < 0) {
+        root->esquerda = esquerdaRotate(root->esquerda);
+        return direitaRotate(root);
+    }
+
+    // direita direita
+    if (balance < -1 && balanceamento(root->direita) <= 0)
+        return esquerdaRotate(root);
+
+    // direita esquerda
+    if (balance < -1 && balanceamento(root->direita) > 0) {
+        root->direita = direitaRotate(root->direita);
+        return esquerdaRotate(root);
+    }
+
+    return root;
+}
+
 // Imprime os nós em ordem
 void inOrder(struct Node *raiz) { 
     if(raiz != NULL) { 
@@ -193,4 +265,4 @@ int main() {
   printf("\n");
 
   return 0; 
-} 
+}
