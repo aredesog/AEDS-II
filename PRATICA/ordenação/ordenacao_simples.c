@@ -40,12 +40,11 @@ void bubble(int *vetor, int n) {
 void selection(int *vetor, int n) {
     
     imprimir(vetor);
-    
-    int trocou = 0;
+    printf("\n");
 
-    for(int i = 0; i < n; i++){
+    for(int i = 0; i < n -1; i++){
         int menor = i;
-        for(int j = n; ){
+        for(int j = i;j < n; j++){
             if(vetor[j] < vetor[menor]){
                 menor = j;
             }
@@ -57,14 +56,14 @@ void selection(int *vetor, int n) {
         }
 
     imprimir(vetor);
-    return;
+    }
 }
 
 void insertion(int *vetor) {
-    //////////////////////////////////////////////////////////////
-    ////////////////////// IMPLEMENTAR AQUI //////////////////////
-    //////////////////////////////////////////////////////////////
+    
     imprimir(vetor);
+
+    
     return;
 }
 
@@ -84,7 +83,7 @@ int main() {
 	 switch(n) {
         case 1: bubble(vetor, 50);
 			    break;
-		 case 2: selection(vetor);
+		 case 2: selection(vetor, 50);
 			    break;
 		 case 3: insertion(vetor);
 			    break;
