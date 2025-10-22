@@ -1,6 +1,8 @@
 #include<stdio.h> 
 #include<stdlib.h> 
-#include "ordenacao_simples.h"
+//#include "ordenacao_simples.h"
+
+
   
 // Imprime um vetor de inteiros
 void imprimir(int *vetor) {
@@ -11,18 +13,49 @@ void imprimir(int *vetor) {
     printf("\n");
 }
 
-void bubble(int *vetor) {
-    //////////////////////////////////////////////////////////////
-    ////////////////////// IMPLEMENTAR AQUI //////////////////////
-    //////////////////////////////////////////////////////////////
+void bubble(int *vetor, int n) {
     imprimir(vetor);
-    return;
+    printf("\n");
+    
+    int trocou;
+    do {
+        trocou = 0;
+        for (int i = 0; i < n - 1; i++) { //varre o vetor
+            if (vetor[i] > vetor[i + 1]) { //compara com o da frente
+
+                int temp = vetor[i]; //variavel auxiliar
+                vetor[i] = vetor[i + 1];
+                vetor[i + 1] = temp;
+                
+                trocou = 1;
+            }
+        }
+        n--; // marca aqueles que ja passou
+    
+        imprimir(vetor);
+
+    } while (trocou);
 }
 
-void selection(int *vetor) {
-    //////////////////////////////////////////////////////////////
-    ////////////////////// IMPLEMENTAR AQUI //////////////////////
-    //////////////////////////////////////////////////////////////
+void selection(int *vetor, int n) {
+    
+    imprimir(vetor);
+    
+    int trocou = 0;
+
+    for(int i = 0; i < n; i++){
+        int menor = i;
+        for(int j = n; ){
+            if(vetor[j] < vetor[menor]){
+                menor = j;
+            }
+        }
+        if(i != menor){
+            int aux = vetor[i];
+            vetor[i] = vetor[menor];
+            vetor[menor] = aux;
+        }
+
     imprimir(vetor);
     return;
 }
@@ -49,7 +82,7 @@ int main() {
 	 printf("\nEntre sua opção : ");
 	 scanf("%d",&n);
 	 switch(n) {
-        case 1: bubble(vetor);
+        case 1: bubble(vetor, 50);
 			    break;
 		 case 2: selection(vetor);
 			    break;
@@ -63,4 +96,4 @@ int main() {
 	} while(1);
 
   return 0; 
-} 
+}

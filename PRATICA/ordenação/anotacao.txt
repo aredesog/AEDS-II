@@ -1,0 +1,49 @@
+🔹 1. Bubble Sort (Ordenação por "bolha")
+
+O Bubble Sort compara elementos vizinhos e troca eles de posição quando estão fora de ordem.
+A cada passada pelo vetor, o maior elemento "sobe" para o final, como se fosse uma bolha subindo na água. Ele repete esse processo várias vezes até não precisar mais fazer trocas.
+
+Ideia principal:
+➡️ Ficar trocando pares vizinhos até tudo estar ordenado.
+
+Vantagem:
+Muito simples de entender.
+
+Desvantagem:
+Muito lento se o vetor for grande (faz muitas comparações repetidas).
+
+
+
+🔹 2. Selection Sort (Ordenação por "seleção")
+
+O Selection Sort percorre o vetor buscando o menor elemento e o coloca na primeira posição.
+Depois busca o segundo menor e coloca na segunda posição… e assim por diante.
+
+Ele não troca o tempo todo como o Bubble Sort — ele procura primeiro quem é o menor, e só então faz uma única troca.
+
+Ideia principal:
+➡️ Encontrar o menor elemento e colocá-lo no lugar certo a cada passo.
+
+Vantagem:
+Faz menos trocas que o Bubble Sort (geralmente só uma por rodada).
+
+Desvantagem:
+Continua tendo comparações desnecessárias mesmo se o vetor já está quase ordenado.
+
+
+
+🔹 3. Insertion Sort (Ordenação por "inserção")
+
+O Insertion Sort funciona como quando você organiza cartas na mão: você pega o próximo elemento e insere na posição correta entre os que já estão ordenados.
+
+Ele vai construindo a lista ordenada aos poucos, deslocando (empurrando) os elementos maiores para frente até encontrar a posição correta do novo elemento.
+
+Ideia principal:
+➡️ Pega um elemento e insere no ponto onde ele deveria estar.
+
+Vantagens:
+Muito eficiente quando o vetor já está quase ordenado.
+Bom para vetores pequenos.
+
+Desvantagem:
+Ainda é O(n²) no pior caso (quando está totalmente bagunçado).
