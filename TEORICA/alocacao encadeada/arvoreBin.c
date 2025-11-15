@@ -9,14 +9,14 @@ typedef struct arvore{
 }no;
 
 no *buscaArvore(no *raiz, int x){
-    if(raiz == NULL || raiz->chave == x){
+    if(raiz == NULL || raiz->chave == x){ // se a raiz for vazia == arvore vazia
         return raiz;
     }
 
     if(x < raiz->chave){
-        return buscaArvore(raiz->esq, x);
+        return buscaArvore(raiz->esq, x); //menor p esquerda
     }else{
-        return buscaArvore(raiz->dir, x);
+        return buscaArvore(raiz->dir, x); // maior para direita
     }
 }
 
