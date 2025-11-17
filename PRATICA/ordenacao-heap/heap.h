@@ -1,19 +1,18 @@
 #ifndef HEAP_H
 #define HEAP_H
 
-#include <stdbool.h>
+typedef struct heap {
+    int *vetor;
+    int tam;
+    int fim;
+} HEAP;
 
-typedef struct {
-    int *vetor;   // vetor de prioridades
-    int tamanho;  // capacidade máxima
-    int fim;      // índice do último elemento
-} Heap;
+HEAP* heap_inicializa(int tamanho);
+void heap_insere(HEAP *h, int prioridade);
+int heap_remove(HEAP *h);
 
-Heap* heap_inicializa(int tamanho);
-void heap_insere(Heap *h, int prioridade);
-bool ehVazia(Heap *h);
-bool ehCheia(Heap *h);
-int heap_remove(Heap *h);
-void heap_libera(Heap *h);
+// === implementações requeridas ===
+int ehVazia(HEAP *h);
+int ehCheia(HEAP *h);
 
 #endif

@@ -1,21 +1,39 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -g
+# Automatizando o makefile
 
-OBJ = main.o heap.o
+# Nome do projeto
+PROJ_NAME=heap
 
-all: programa
+# Arquivos .c
+C_SOURCE=$(wildcard *.c)
 
-programa: $(OBJ)
-	$(CC) $(CFLAGS) -o programa $(OBJ)
+# Arquivos .h
+H_SOURCE=$(wildcard *.h)
 
-main.o: main.c heap.h
-	$(CC) $(CFLAGS) -c main.c
+# Arquivos objeto
+OBJ=$(C_SOURCE:.c=.o)
 
-heap.o: heap.c heap.h
-	$(CC) $(CFLAGS) -c heap.c
+# Compilador
+CC=gcc
 
-run: programa
-	./programa
+# Flags (opções) para o compilador
+CC_FLAGS=-c         \
+         -Wall      \
+		 -g         \
+         -pedantic
+
+#########################
+# Compilação e linkagem #
+#########################
+all: $(PROJ_NAME)
+
+$(PROJ_NAME): $(OBJ)
+	$(CC) -o $@ $^
+
+%.o: %.c %.h
+	$(CC) -o $@ $< $(CC_FLAGS)
+
+main.o: main.c $(H_SOURCE)
+	$(CC) -o $@ $< $(CC_FLAGS)
 
 clean:
-	rm -f *.o programa
+	rm -rf *.o $(PROJ_NAME) *~
