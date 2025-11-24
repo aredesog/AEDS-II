@@ -117,13 +117,13 @@ no *insereArvore(no *raiz, int chave){
 }
 
 void visita(no *raiz){
-    printf("\nChave: %d limpa da memoria\n",raiz->chave);
+    printf("\nChave: %d ",raiz->chave);
     free(raiz);
 }
 
 void preOrdem(no *raiz){ //imprime a arvore em pre ordem
     if(raiz != NULL){
-        printf("\nChave: %d limpa da memoria\n",raiz->chave);
+        printf("\nChave: %d",raiz->chave);
         preOrdem(raiz->esq);
         preOrdem(raiz->dir);
     }
@@ -132,7 +132,7 @@ void preOrdem(no *raiz){ //imprime a arvore em pre ordem
 void emOrdem(no *raiz){ //imprime a arvora em ordem
     if(raiz != NULL){
         emOrdem(raiz->esq);
-        printf("\nChave: %d limpa da memoria\n",raiz->chave);
+        printf("\nChave: %d",raiz->chave);
         emOrdem(raiz->dir);
     }
 }
