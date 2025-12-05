@@ -1,14 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Função para imprimir o vetor
-void imprimirVetor(int arr[], int tamanho) {
-    for (int i = 0; i < tamanho; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-}
-
 // Implementação do Bubble Sort
 void bubbleSort(int arr[], int tamanho) {
     int temp;
