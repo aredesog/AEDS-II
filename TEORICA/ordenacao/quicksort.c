@@ -63,3 +63,11 @@ int main() {
     
     return 0;
 }
+
+/*
+-> Como construir o Quick Sort
+    1°- Escolher um pivô (último elemento, primeiro elemento, mediana, etc.).
+    2°- Implementar a função de particionamento para rearranjar os elementos.
+    3°- Implementar a função recursiva do Quick Sort.
+    4°- Testar o algoritmo com diferentes conjuntos de dados.
+*/

@@ -138,3 +138,12 @@ int main() {
     
     return 0;
 }
+/*
+-> Como construir uma tabela hash
+    1°- Definir o tamanho da tabela (TAMANHO_TABELA).
+    2°- Implementar uma função hash para mapear chaves para índices.
+    3°- Criar uma estrutura para armazenar os elementos (nós da lista encadeada).
+    4°- Implementar funções para inserir, buscar e remover elementos.
+    5°- Tratar colisões usando listas encadeadas.
+    6°- Testar a tabela hash com diferentes operações.
+// */
