@@ -248,8 +248,6 @@ void remover(TabelaHash* th, int chave) {
 }
 
 
-
-
 int main(){
 
     int arr[5] = {22, 12, 1, 44, 99};
@@ -265,7 +263,7 @@ int main(){
     mergeSort(arr, 0, n - 1, n);
 /*
     printf("\n--- QuickSort ---\n");
-    quickSort(arr, n);
+    quickSort(arr, 0, n - 1);
 
     printf("\n--- HeapSort ---\n");
     heapSort(arr, n);

@@ -86,31 +86,6 @@ void remover(TabelaHash* th, int chave) {
     free(atual);
 }
 
-// Imprime a tabela hash
-void imprimirTabela(TabelaHash* th) {
-    printf("\n=== Tabela Hash ===\n");
-    for (int i = 0; i < TAMANHO_TABELA; i++) {
-        printf("[%d]: ", i);
-        No* atual = th->tabela[i];
-        while (atual != NULL) {
-            printf("(%d, %d) -> ", atual->chave, atual->valor);
-            atual = atual->prox;
-        }
-        printf("NULL\n");
-    }
-}
-
-// Libera a memória da tabela
-void liberarTabela(TabelaHash* th) {
-    for (int i = 0; i < TAMANHO_TABELA; i++) {
-        No* atual = th->tabela[i];
-        while (atual != NULL) {
-            No* temp = atual;
-            atual = atual->prox;
-            free(temp);
-        }
-    }
-}
 
 int main() {
     TabelaHash th;
