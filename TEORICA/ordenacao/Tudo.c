@@ -126,6 +126,50 @@ void quickSort(int arr[], int baixo, int alto) {
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------
+//Heapsort
+void heapify(int arr[], int tamanho, int i) {
+    int maior = i;           // Inicializa o maior como raiz
+    int esquerda = 2 * i + 1; // Filho esquerdo
+    int direita = 2 * i + 2;  // Filho direito
+    
+    // Se o filho esquerdo existe e é maior que a raiz
+    if (esquerda < tamanho && arr[esquerda] > arr[maior]) {
+        maior = esquerda;
+    }
+    
+    // Se o filho direito existe e é maior que o maior até agora
+    if (direita < tamanho && arr[direita] > arr[maior]) {
+        maior = direita;
+    }
+    
+    // Se o maior não é a raiz
+    if (maior != i) {
+        trocar(&arr[i], &arr[maior]);
+        
+        // Recursivamente heapify a subárvore afetada
+        heapify(arr, tamanho, maior);
+    }
+}
+
+// Função principal do Heap Sort
+void heapSort(int arr[], int tamanho) {
+    // 1. Construir max-heap (reorganizar o array)
+    // Começa do último nó não-folha e vai até a raiz
+    for (int i = tamanho / 2 - 1; i >= 0; i--) {
+        heapify(arr, tamanho, i);
+    }
+    
+    // 2. Extrair elementos do heap um por um
+    for (int i = tamanho - 1; i > 0; i--) {
+        // Move a raiz atual (maior elemento) para o final
+        trocar(&arr[0], &arr[i]);
+        
+        // Chama heapify na heap reduzida
+        heapify(arr, i, 0);
+    }
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------
 //Tabela Hash
 #define TAMANHO_TABELA 10
 
