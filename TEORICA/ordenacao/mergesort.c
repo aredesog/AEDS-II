@@ -93,3 +93,11 @@ int main() {
     
     return 0;
 }
+
+/*
+-> Como construir o Merge Sort
+    1°- Dividir o array em duas metades recursivamente até que cada subarray tenha um elemento.
+    2°- Implementar a função de mesclagem para combinar dois subarrays ordenados em um único array ordenado.
+    3°- Chamar a função de mesclagem após ordenar as duas metades.
+    4°- Testar o algoritmo com diferentes conjuntos de dados.
+*/
