@@ -1,13 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Função para imprimir o vetor
-void imprimirVetor(int arr[], int tamanho) {
-    for (int i = 0; i < tamanho; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-}
 
 // Função para mesclar dois subvetores ordenados
 void merge(int arr[], int esquerda, int meio, int direita) {
@@ -17,11 +10,6 @@ void merge(int arr[], int esquerda, int meio, int direita) {
     // Criar arrays temporários
     int* L = (int*)malloc(n1 * sizeof(int));
     int* R = (int*)malloc(n2 * sizeof(int));
-    
-    if (L == NULL || R == NULL) {
-        fprintf(stderr, "Erro ao alocar memória temporária\n");
-        exit(1);
-    }
     
     // Copiar dados para os arrays temporários L[] e R[]
     for (int i = 0; i < n1; i++)

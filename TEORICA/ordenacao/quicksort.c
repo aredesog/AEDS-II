@@ -48,40 +48,6 @@ void quickSort(int arr[], int baixo, int alto) {
     }
 }
 
-// Versão alternativa: particionamento Hoare (mais eficiente)
-int particionarHoare(int arr[], int baixo, int alto) {
-    int pivo = arr[baixo];  // Escolhe o primeiro elemento como pivô
-    int i = baixo - 1;
-    int j = alto + 1;
-    
-    while (1) {
-        // Encontra elemento à esquerda que deveria estar à direita
-        do {
-            i++;
-        } while (arr[i] < pivo);
-        
-        // Encontra elemento à direita que deveria estar à esquerda
-        do {
-            j--;
-        } while (arr[j] > pivo);
-        
-        // Se os índices se cruzaram, retorna
-        if (i >= j)
-            return j;
-        
-        trocar(&arr[i], &arr[j]);
-    }
-}
-
-// Quick Sort usando particionamento Hoare
-void quickSortHoare(int arr[], int baixo, int alto) {
-    if (baixo < alto) {
-        int pi = particionarHoare(arr, baixo, alto);
-        
-        quickSortHoare(arr, baixo, pi);
-        quickSortHoare(arr, pi + 1, alto);
-    }
-}
 
 int main() {
     int vetor[] = {10, 7, 8, 9, 1, 5};
