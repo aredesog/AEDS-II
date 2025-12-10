@@ -84,74 +84,16 @@ void quickSortHoare(int arr[], int baixo, int alto) {
 }
 
 int main() {
-    // Exemplo 1: Vetor desordenado (Lomuto)
-    int vetor1[] = {10, 7, 8, 9, 1, 5};
-    int tam1 = sizeof(vetor1) / sizeof(vetor1[0]);
+    int vetor[] = {10, 7, 8, 9, 1, 5};
+    int tamanho = sizeof(vetor) / sizeof(vetor[0]);
     
-    printf("=== Quick Sort (Lomuto) - Exemplo 1 ===\n");
     printf("Vetor original: ");
-    imprimirVetor(vetor1, tam1);
+    imprimirVetor(vetor, tamanho);
     
-    quickSort(vetor1, 0, tam1 - 1);
+    quickSort(vetor, 0, tamanho - 1);
     
     printf("Vetor ordenado: ");
-    imprimirVetor(vetor1, tam1);
-    printf("\n");
-    
-    // Exemplo 2: Vetor maior (Lomuto)
-    int vetor2[] = {64, 34, 25, 12, 22, 11, 90, 88, 45, 50, 33, 17};
-    int tam2 = sizeof(vetor2) / sizeof(vetor2[0]);
-    
-    printf("=== Quick Sort (Lomuto) - Exemplo 2 ===\n");
-    printf("Vetor original: ");
-    imprimirVetor(vetor2, tam2);
-    
-    quickSort(vetor2, 0, tam2 - 1);
-    
-    printf("Vetor ordenado: ");
-    imprimirVetor(vetor2, tam2);
-    printf("\n");
-    
-    // Exemplo 3: Vetor com elementos repetidos (Lomuto)
-    int vetor3[] = {5, 2, 8, 2, 9, 1, 5, 5};
-    int tam3 = sizeof(vetor3) / sizeof(vetor3[0]);
-    
-    printf("=== Quick Sort (Lomuto) - Exemplo 3 (com repetidos) ===\n");
-    printf("Vetor original: ");
-    imprimirVetor(vetor3, tam3);
-    
-    quickSort(vetor3, 0, tam3 - 1);
-    
-    printf("Vetor ordenado: ");
-    imprimirVetor(vetor3, tam3);
-    printf("\n");
-    
-    // Exemplo 4: Usando particionamento Hoare
-    int vetor4[] = {12, 11, 13, 5, 6, 7, 3, 9, 2};
-    int tam4 = sizeof(vetor4) / sizeof(vetor4[0]);
-    
-    printf("=== Quick Sort (Hoare) - Exemplo 4 ===\n");
-    printf("Vetor original: ");
-    imprimirVetor(vetor4, tam4);
-    
-    quickSortHoare(vetor4, 0, tam4 - 1);
-    
-    printf("Vetor ordenado: ");
-    imprimirVetor(vetor4, tam4);
-    printf("\n");
-    
-    // Exemplo 5: Vetor já ordenado (pior caso para pivô fixo)
-    int vetor5[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int tam5 = sizeof(vetor5) / sizeof(vetor5[0]);
-    
-    printf("=== Quick Sort (Lomuto) - Exemplo 5 (já ordenado) ===\n");
-    printf("Vetor original: ");
-    imprimirVetor(vetor5, tam5);
-    
-    quickSort(vetor5, 0, tam5 - 1);
-    
-    printf("Vetor ordenado: ");
-    imprimirVetor(vetor5, tam5);
+    imprimirVetor(vetor, tamanho);
     
     return 0;
 }
