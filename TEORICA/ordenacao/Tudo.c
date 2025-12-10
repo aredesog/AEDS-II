@@ -9,8 +9,7 @@ void troca(int *x, int *y){
 }
 
 // Função para imprimir o vetor
-void imprime_vetor(int vetor[], int n){
-    printf("Vetor atual: ");
+int imprime_vetor(int vetor[], int n){
     for (int i = 0; i < n; i++){
         printf("%d ", vetor[i]);
     }
@@ -18,14 +17,13 @@ void imprime_vetor(int vetor[], int n){
 }
 //-----------------------------------------------------------------------------------------------------------------------------------
 //Implementação do bubbleSort 
-void bubblesort(int vetor[], int n){
+void bubblesort(int arr[], int n){
     for(int i = 0; i < n - 1; i++){
-        bool trocou;
-        for(int j = 0;j < n -i; j++ ){
-            if(vetor[j] > vetor[j + 1]){
-                troca(&vetor[j], &vetor[j + 1]);
+        bool trocou = false;
+        for(int j = 0;j < n - i - 1; j++ ){
+            if(arr[j] > arr[j + 1]){
+                troca(&arr[j], &arr[j + 1]);
                 trocou = true;
-                imprime_vetor(vetor, n);
             } 
         }
         if(!trocou) break;    
@@ -33,9 +31,9 @@ void bubblesort(int vetor[], int n){
 }
 //----------------------------------------------------------------------------------------------------------------------------------------
 //implementação do MergeSort
-void merge(int arr[], int esquerda, int meio, int direita) {
-    int n1 = meio - esquerda + 1;  // Tamanho do subvetor esquerdo
-    int n2 = direita - meio;        // Tamanho do subvetor direito
+void merge(int arr[], int esq, int meio, int dir) {
+    int n1 = meio - esq + 1;  // Tamanho do subvetor esquerdo
+    int n2 = dir - meio;        // Tamanho do subvetor direito
     
     // Criar arrays temporários
     int* L = (int*)malloc(n1 * sizeof(int));
@@ -43,14 +41,14 @@ void merge(int arr[], int esquerda, int meio, int direita) {
     
     // Copiar dados para os arrays temporários L[] e R[]
     for (int i = 0; i < n1; i++)
-        L[i] = arr[esquerda + i];
+        L[i] = arr[esq + i];
     for (int j = 0; j < n2; j++)
         R[j] = arr[meio + 1 + j];
     
-    // Mesclar os arrays temporários de volta em arr[esquerda..direita]
+    // Mesclar os arrays temporários de volta em arr[esq..dir]
     int i = 0;    // Índice inicial do primeiro subvetor
     int j = 0;    // Índice inicial do segundo subvetor
-    int k = esquerda; // Índice inicial do subvetor mesclado
+    int k = esq; // Índice inicial do subvetor mesclado
     
     while (i < n1 && j < n2) {
         if (L[i] <= R[j]) {
@@ -82,87 +80,87 @@ void merge(int arr[], int esquerda, int meio, int direita) {
     free(R);
 }
 
-void mergeSort(int arr[], int esquerda, int direita) {
-    if (esquerda < direita) {
+void mergeSort(int arr[], int esq, int dir, int n) {
+    if (esq < dir) {
         // Encontra o ponto médio
-        int meio = esquerda + (direita - esquerda) / 2;
+        int meio = esq + (dir - esq) / 2;
         
         // Ordena a primeira e a segunda metade
-        mergeSort(arr, esquerda, meio);
-        mergeSort(arr, meio + 1, direita);
+        mergeSort(arr, esq, meio, n);
+        mergeSort(arr, meio + 1, dir, n);
         
         // Mescla as duas metades ordenadas
-        merge(arr, esquerda, meio, direita);
+        merge(arr, esq, meio, dir);
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------
 //QuickSort
-int particionar(int arr[], int baixo, int alto) {
-    int pivo = arr[alto];  // Escolhe o último elemento como pivô
-    int i = baixo - 1;     // Índice do menor elemento
+int particionar(int arr[], int esq, int dir) {
+    int pivo = arr[dir];  // Escolhe o último elemento como pivô
+    int i = esq - 1;     // Índice do menor elemento
     
-    for (int j = baixo; j < alto; j++) {
+    for (int j = esq; j < dir; j++) {
         // Se o elemento atual é menor ou igual ao pivô
         if (arr[j] <= pivo) {
             i++;
-            trocar(&arr[i], &arr[j]);
+            troca(&arr[i], &arr[j]);
         }
     }
     
     // Coloca o pivô na posição correta
-    trocar(&arr[i + 1], &arr[alto]);
+    troca(&arr[i + 1], &arr[dir]);
     return i + 1;
 }
 
 // Função principal do Quick Sort
-void quickSort(int arr[], int baixo, int alto) {
-    if (baixo < alto) {
+void quickSort(int arr[], int esq, int dir) {
+    if (esq < dir) {
         // pi é o índice de particionamento, arr[pi] está na posição correta
-        int pi = particionar(arr, baixo, alto);
+        int pi = particionar(arr, esq, dir);
         
         // Ordena recursivamente os elementos antes e depois da partição
-        quickSort(arr, baixo, pi - 1);
-        quickSort(arr, pi + 1, alto);
+        quickSort(arr, esq, pi - 1);
+        quickSort(arr, pi + 1, dir);
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------
 //Heapsort
-void heapify(int arr[], int tamanho, int i) {
-    int maior = i;           // Inicializa o maior como raiz
-    int esquerda = 2 * i + 1; // Filho esquerdo
-    int direita = 2 * i + 2;  // Filho direito
+void heapify(int arr[], int n, int i) {
+    int maior = i;        // Inicializa o maior como raiz
+    int esq = 2 * i + 1;  // Filho esquerdo
+    int dir = 2 * i + 2;  // Filho direito
     
     // Se o filho esquerdo existe e é maior que a raiz
-    if (esquerda < tamanho && arr[esquerda] > arr[maior]) {
-        maior = esquerda;
+    if (esq < n && arr[esq] > arr[maior]) {
+        maior = esq;
     }
     
     // Se o filho direito existe e é maior que o maior até agora
-    if (direita < tamanho && arr[direita] > arr[maior]) {
-        maior = direita;
+    if (dir < n && arr[dir] > arr[maior]) {
+        maior = dir;
     }
     
     // Se o maior não é a raiz
     if (maior != i) {
-        trocar(&arr[i], &arr[maior]);
+        troca(&arr[i], &arr[maior]);
         
         // Recursivamente heapify a subárvore afetada
-        heapify(arr, tamanho, maior);
+        heapify(arr, n, maior);
     }
 }
 
 // Função principal do Heap Sort
-void heapSort(int arr[], int tamanho) {
+void heapSort(int arr[], int n) {
     // 1. Construir max-heap (reorganizar o array)
     // Começa do último nó não-folha e vai até a raiz
-    for (int i = tamanho / 2 - 1; i >= 0; i--) {
-        heapify(arr, tamanho, i);
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        heapify(arr, n, i);
     }
     
     // 2. Extrair elementos do heap um por um
-    for (int i = tamanho - 1; i > 0; i--) {
+    for (int i = n - 1; i > 0; i--) {
         // Move a raiz atual (maior elemento) para o final
-        trocar(&arr[0], &arr[i]);
+        troca(&arr[0], &arr[i]);
         
         // Chama heapify na heap reduzida
         heapify(arr, i, 0);
@@ -185,6 +183,11 @@ typedef struct {
     No* tabela[TAMANHO_TABELA];
 } TabelaHash;
 
+
+// Função hash simples (método da divisão)
+int funcaoHash(int chave) {
+    return chave % TAMANHO_TABELA;
+}
 
 // Busca um elemento na tabela hash
 int buscar(TabelaHash* th, int chave) {
@@ -249,10 +252,27 @@ void remover(TabelaHash* th, int chave) {
 
 int main(){
 
-    int vetor [5] = {22,12,1,44,99};
-    int n = 5;
+    int arr[5] = {22, 12, 1, 44, 99};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    
+    printf("Vetor original: ");
+    imprime_vetor(arr, n);
 
-    bubblesort(vetor, n);
+    //printf("\n--- BubbleSort ---\n");
+    //bubblesort(arr, n);
 
+    printf("\n--- MergeSort ---\n");
+    mergeSort(arr, 0, n - 1, n);
+/*
+    printf("\n--- QuickSort ---\n");
+    quickSort(arr, n);
+
+    printf("\n--- HeapSort ---\n");
+    heapSort(arr, n);
+*/
+
+    printf("\nVetor ordenado: ");
+    imprime_vetor(arr, n);
+    
     return 0;
 }
