@@ -49,3 +49,12 @@ int main(){
 
     return 0;  
 }
+/*
+-> Como construir o Bubble Sort
+    1°- Implementar uma função para trocar dois elementos.
+    2°- Criar a função bubble_sort que recebe o vetor e seu tamanho.
+    3°- Utilizar dois loops: o externo para controlar as passagens e o interno para comparar elementos adjacentes.
+    4°- Adicionar uma flag para verificar se houve troca em uma passagem.
+    5°- Se não houver troca, interromper o algoritmo antecipadamente.
+    6°- Testar o algoritmo com diferentes conjuntos de dados.
+// */
