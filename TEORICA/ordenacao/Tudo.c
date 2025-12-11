@@ -16,6 +16,7 @@ int imprime_vetor(int vetor[], int n){
     printf("\n"); 
 }
 //-----------------------------------------------------------------------------------------------------------------------------------
+//O(n)^2
 //Implementação do bubbleSort 
 void bubblesort(int arr[], int n){
     for(int i = 0; i < n - 1; i++){
@@ -30,7 +31,8 @@ void bubblesort(int arr[], int n){
     }
 }
 //----------------------------------------------------------------------------------------------------------------------------------------
-//implementação do MergeSort
+//O(n log n) - todos os casos
+//Implementação do MergeSort
 void merge(int arr[], int esq, int meio, int dir) {
     int n1 = meio - esq + 1;  // Tamanho do subvetor esquerdo
     int n2 = dir - meio;        // Tamanho do subvetor direito
@@ -94,7 +96,8 @@ void mergeSort(int arr[], int esq, int dir, int n) {
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------
-//QuickSort
+//O(n log n) - melhor e médio caso | O(n²) - pior caso
+//Implementação do QuickSort
 int particionar(int arr[], int esq, int dir) {
     int pivo = arr[dir];  // Escolhe o último elemento como pivô
     int i = esq - 1;     // Índice do menor elemento
@@ -124,7 +127,8 @@ void quickSort(int arr[], int esq, int dir) {
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------
-//Heapsort
+//O(n log n) - todos os casos
+//Implementação do Heapsort
 void heapify(int arr[], int n, int i) {
     int maior = i;        // Inicializa o maior como raiz
     int esq = 2 * i + 1;  // Filho esquerdo
@@ -168,7 +172,8 @@ void heapSort(int arr[], int n) {
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-//Tabela Hash
+//O(1) - inserção, busca e remoção (caso médio) | O(n) - pior caso com muitas colisões
+//Implementação da Tabela Hash
 #define TAMANHO_TABELA 10
 
 // Estrutura de um nó da lista encadeada (para tratamento de colisões)
